@@ -1,0 +1,20 @@
+{% load static %}
+<header class="relative z-30">
+    <nav class="hidden bg-[#027BAE] lg:block" aria-label="Primary navigation">
+        <div class="mx-auto flex min-h-[72px] max-w-6xl items-center justify-center px-4">
+            {% include "partials/nav_links.html" with mobile=False %}
+        </div>
+    </nav>
+    <div class="mx-auto flex min-h-24 max-w-6xl items-center justify-between px-6 lg:hidden">
+        <a href="/" aria-label="Energicotel home">
+            <img class="h-auto w-32" src="{% static 'img/Logo-Tr-01.png' %}" alt="Energicotel PLC — Your Energy Provider" width="182" height="42">
+        </a>
+        <div class="relative">
+            <input class="sr-only" type="checkbox" id="mobile-nav-toggle">
+            <label class="flex h-11 w-11 cursor-pointer items-center justify-center text-ink" for="mobile-nav-toggle" aria-label="Open navigation">
+                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+            </label>
+            {% include "partials/mobile_drawer.html" %}
+        </div>
+    </div>
+</header>

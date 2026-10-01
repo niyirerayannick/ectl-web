@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Server error | Energicotel PLC{% endblock %}
+{% block content %}
+<section class="mx-auto flex min-h-[55vh] max-w-3xl flex-col items-center justify-center px-6 py-16 text-center">
+    <p class="font-nav text-small font-medium uppercase text-heading">500</p>
+    <h1 class="mt-3 text-3xl font-bold text-heading">Something went wrong</h1>
+    <p class="mt-4 max-w-xl text-body">We could not complete your request right now. Please try again shortly.</p>
+    <a class="mt-8 inline-flex items-center justify-center rounded-btn bg-brand-deep px-6 py-3 font-medium text-white hover:bg-brand-blue" href="/">Return to home</a>
+</section>
+{% endblock %}

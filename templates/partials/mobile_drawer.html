@@ -1,0 +1,11 @@
+{% load static %}
+<label class="mobile-drawer-backdrop" for="mobile-nav-toggle" aria-label="Close navigation"></label>
+<aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+    <div class="flex items-center justify-between border-b border-gray-200 px-5 py-4">
+        <img class="h-auto w-36" src="{% static 'img/Logo-Tr-01.png' %}" alt="Energicotel PLC" width="182" height="42">
+        <label class="flex h-11 w-11 cursor-pointer items-center justify-center text-2xl text-ink" for="mobile-nav-toggle" aria-label="Close navigation">&times;</label>
+    </div>
+    <nav class="px-3 py-4 text-body" aria-label="Mobile primary navigation">
+        {% include "partials/nav_links.html" with mobile=True %}
+    </nav>
+</aside>

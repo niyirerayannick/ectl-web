@@ -1,0 +1,71 @@
+{% if mobile %}
+<ul class="drawer-nav flex flex-col gap-1">
+    <li><a class="block px-4 py-3" href="/">Home</a></li>
+    <li>
+        <details>
+            <summary class="flex cursor-pointer items-center justify-between px-4 py-3">Who we are <span aria-hidden="true">▾</span></summary>
+            <ul class="bg-surface px-4 py-1">
+                <li><a class="block px-4 py-2" href="/about/">About</a></li>
+                <li><a class="block px-4 py-2" href="/about/board/">Board Members</a></li>
+                <li><a class="block px-4 py-2" href="/about/management/">Senior Management</a></li>
+            </ul>
+        </details>
+    </li>
+    <li>
+        <details>
+            <summary class="flex cursor-pointer items-center justify-between px-4 py-3">What we do <span aria-hidden="true">▾</span></summary>
+            <ul class="bg-surface px-4 py-1">
+                <li><a class="block px-4 py-2" href="/business-units/power/">ECTL Power</a></li>
+                <li><a class="block px-4 py-2" href="/business-units/gas/">ECTL Gas</a></li>
+                <li><a class="block px-4 py-2" href="/business-units/engineering/">ECTL Engineering</a></li>
+                <li><a class="block px-4 py-2" href="/business-units/solar/">ECTL Solar</a></li>
+            </ul>
+        </details>
+    </li>
+    <li>
+        <details>
+            <summary class="flex cursor-pointer items-center justify-between px-4 py-3">Media Center <span aria-hidden="true">▾</span></summary>
+            <ul class="bg-surface px-4 py-1">
+                <li><a class="block px-4 py-2" href="/news/">Blog</a></li>
+                <li><a class="block px-4 py-2" href="/gallery/">Gallery</a></li>
+            </ul>
+        </details>
+    </li>
+    <li><a class="block px-4 py-3" href="/contact/">Contact</a></li>
+</ul>
+{% else %}
+<ul class="site-nav flex items-center gap-7 text-nav font-nav font-medium uppercase text-white">
+    <li><a class="nav-link block border-b border-transparent px-1 py-2 hover:border-white focus-visible:border-white" href="/">Home</a></li>
+    <li>
+        <details>
+            <summary class="nav-link flex cursor-pointer items-center gap-2 border-b border-transparent px-1 py-2 hover:border-white focus-visible:border-white">Who we are <span class="nav-caret" aria-hidden="true"></span></summary>
+            <ul class="nav-dropdown absolute z-20 min-w-56 bg-white py-2 text-body normal-case shadow-lg">
+                <li><a class="block px-5 py-2 hover:bg-surface" href="/about/">About</a></li>
+                <li><a class="block px-5 py-2 hover:bg-surface" href="/about/board/">Board Members</a></li>
+                <li><a class="block px-5 py-2 hover:bg-surface" href="/about/management/">Senior Management</a></li>
+            </ul>
+        </details>
+    </li>
+    <li>
+        <details>
+            <summary class="nav-link flex cursor-pointer items-center gap-2 border-b border-transparent px-1 py-2 hover:border-white focus-visible:border-white">What we do <span class="nav-caret" aria-hidden="true"></span></summary>
+            <ul class="nav-dropdown absolute z-20 min-w-56 bg-white py-2 text-body normal-case shadow-lg">
+                <li><a class="block px-5 py-2 hover:bg-surface" href="/business-units/power/">ECTL Power</a></li>
+                <li><a class="block px-5 py-2 hover:bg-surface" href="/business-units/gas/">ECTL Gas</a></li>
+                <li><a class="block px-5 py-2 hover:bg-surface" href="/business-units/engineering/">ECTL Engineering</a></li>
+                <li><a class="block px-5 py-2 hover:bg-surface" href="/business-units/solar/">ECTL Solar</a></li>
+            </ul>
+        </details>
+    </li>
+    <li>
+        <details>
+            <summary class="nav-link flex cursor-pointer items-center gap-2 border-b border-transparent px-1 py-2 hover:border-white focus-visible:border-white">Media Center <span class="nav-caret" aria-hidden="true"></span></summary>
+            <ul class="nav-dropdown absolute z-20 min-w-56 bg-white py-2 text-body normal-case shadow-lg">
+                <li><a class="block px-5 py-2 hover:bg-surface" href="/news/">Blog</a></li>
+                <li><a class="block px-5 py-2 hover:bg-surface" href="/gallery/">Gallery</a></li>
+            </ul>
+        </details>
+    </li>
+    <li><a class="nav-link block border-b border-transparent px-1 py-2 hover:border-white focus-visible:border-white" href="/contact/">Contact</a></li>
+</ul>
+{% endif %}

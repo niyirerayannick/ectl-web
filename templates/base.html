@@ -4,9 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-          content="Energicotel PLC — energy company listed on the Rwanda Stock Exchange.">
+    <meta name="description" content="{% block meta_description %}Energicotel PLC — energy company listed on the Rwanda Stock Exchange.{% endblock %}">
     <title>{% block title %}Energicotel PLC{% endblock %}</title>
+    <link rel="icon" href="{% static 'img/Logo-Tr-01.png' %}" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Roboto:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     {# Tailwind CSS v4 — built by `python manage.py tailwind build` (CLAUDE.md §5). #}
     {% tailwind_css %}
     {# Vendored HTMX 2 + Alpine.js 3 — progressive enhancement only (CLAUDE.md §0.4, §7). #}
@@ -14,11 +17,13 @@
     <script src="{% static 'js/vendor/alpine.min.js' %}" defer></script>
     <script src="{% static 'js/app.js' %}" defer></script>
 </head>
-<body>
-    {# Phase 2 builds the real shell here: topbar, header/nav, #main, footer #}
-    {# (CLAUDE.md §3, §6); Phase 5 adds hx-boost SPA behaviour (§7). #}
-    <main id="main">
+<body class="bg-white font-body text-body leading-body">
+    {% include "partials/topbar.html" %}
+    {% include "partials/header.html" %}
+    <main id="main" class="min-h-screen">
         {% block content %}{% endblock %}
     </main>
+    {% include "partials/footer.html" %}
+    {% include "partials/floating_call.html" %}
 </body>
 </html>
