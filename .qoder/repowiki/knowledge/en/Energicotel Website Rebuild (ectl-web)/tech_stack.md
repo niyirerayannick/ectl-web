@@ -1,0 +1,1 @@
+Django 5.2 LTS + Python 3.12+, PostgreSQL (via `DATABASE_URL`) with SQLite fallback in dev, Tailwind CSS v4 through django-tailwind-cli (no Node.js), HTMX 2 + Alpine.js 3 vendored under `static/js/vendor/`, django-unfold admin, WhiteNoise static files, pytest + pytest-django for tests.

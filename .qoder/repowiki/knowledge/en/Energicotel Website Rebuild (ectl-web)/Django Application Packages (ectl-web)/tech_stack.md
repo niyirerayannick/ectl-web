@@ -1,0 +1,1 @@
+Django applications using class-based `TemplateView` for views and the standard Django ORM/admin scaffolding.

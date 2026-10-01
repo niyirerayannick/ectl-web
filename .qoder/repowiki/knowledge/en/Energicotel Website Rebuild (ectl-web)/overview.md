@@ -1,0 +1,1 @@
+Django 5.2 site rebuilding energicotel.com, wiring Django apps under config/ settings against the archived WordPress design reference and vendored HTMX/Alpine front-end.

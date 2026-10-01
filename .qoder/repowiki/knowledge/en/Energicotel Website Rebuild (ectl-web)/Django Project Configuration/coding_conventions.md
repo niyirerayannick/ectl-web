@@ -1,0 +1,3 @@
+- Environment-specific overrides live in `dev.py` / `prod.py` that import and extend `base.py`; shared defaults never change across environments.
+- Secrets and external URLs are read from environment variables via `os.environ.get` (with `dotenv.load_dotenv` loading `.env` at startup), never hard-coded except for dev-only placeholders.
+- Path constants use `pathlib.Path` relative to `BASE_DIR = Path(__file__).resolve().parent.parent.parent` rather than string concatenation.

@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: django_apps
+title: Django Application Packages (ectl-web)
+scope:
+    - apps/
+source_files: []
+depends_on: []
+related_to: []

@@ -1,0 +1,3 @@
+- Environment-specific configuration is selected via `DJANGO_SETTINGS_MODULE` (`config.settings.dev` by default, `config.settings.prod` in production).
+- Runtime dependencies are layered across `requirements/base.txt`, `requirements/dev.txt`, and `requirements/prod.txt` rather than a single flat file.
+- Front-end libraries (htmx, Alpine.js) are vendored as pinned copies under `static/js/vendor/` instead of pulled at runtime.

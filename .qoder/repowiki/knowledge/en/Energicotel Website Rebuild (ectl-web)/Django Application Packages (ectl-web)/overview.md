@@ -1,0 +1,1 @@
+Django application packages for the ectl-web site, organizing core pages, contact, gallery, news, team, and business units features as separate Django apps.

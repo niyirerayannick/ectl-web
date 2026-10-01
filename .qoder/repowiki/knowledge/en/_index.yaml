@@ -1,0 +1,54 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: en-US
+branch: master
+nodes_managed: true
+exported_at: "2026-10-01T15:42:38Z"
+modules:
+    "":
+        dir_name: Energicotel Website Rebuild (ectl-web)
+        title: Energicotel Website Rebuild (ectl-web)
+        scope:
+            - README.md
+            - CLAUDE.md
+            - .gitignore
+            - manage.py
+            - pytest.ini
+            - requirements/
+            - .env.example
+            - extract_design_tokens.py
+            - resume_extract.py
+        source_files: []
+        children:
+            - config
+            - design_reference
+            - django_apps
+        depends_on: []
+        related_to: []
+    config:
+        dir_name: Django Project Configuration
+        title: Django Project Configuration
+        scope:
+            - config/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    design_reference:
+        dir_name: Energicotel Design Reference & Token Archive
+        title: Energicotel Design Reference & Token Archive
+        scope:
+            - design_reference/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    django_apps:
+        dir_name: Django Application Packages (ectl-web)
+        title: Django Application Packages (ectl-web)
+        scope:
+            - apps/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []

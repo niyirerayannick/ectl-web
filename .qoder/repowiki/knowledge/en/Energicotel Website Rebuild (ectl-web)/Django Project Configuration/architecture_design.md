@@ -1,0 +1,5 @@
+The module is a standard Django project root split into two layers:
+- `config/settings/` holds the settings hierarchy: `base.py` contains all environment-agnostic defaults (INSTALLED_APPS, MIDDLEWARE, TEMPLATES, database via `dj_database_url`, WhiteNoise + Tailwind v4 via `django-tailwind-cli`, static storage), while `dev.py` and `prod.py` override only the differences (DEBUG, SECRET_KEY requirements, hardened production values). The package docstring in `settings/__init__.py` documents which module to import for each environment.
+- Top-level files are Django's conventional entry points: `urls.py` wires admin and the home view from `apps.core.views`, `wsgi.py` sets `DJANGO_SETTINGS_MODULE=config.settings.prod` as the Gunicorn default, and `__init__.py` marks the package.
+
+Dependency direction is one-way: `wsgi.py` → `settings.prod` → `settings.base`; `urls.py` depends on `apps.core`. Secrets come exclusively from environment variables (with `.env` loaded by `python-dotenv` as a local-only fallback).

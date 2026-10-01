@@ -1,0 +1,3 @@
+- Each app's `models.py` begins with a module-level docstring that states the implementation phase and lists planned models, referencing the corresponding CLAUDE.md section.
+- Each app's `admin.py` contains a short docstring deferring model registration to Phase 3 rather than registering models inline.
+- Every app ships an empty `migrations/__init__.py` alongside a `migrations/` directory, reserving migration generation for when models are implemented.

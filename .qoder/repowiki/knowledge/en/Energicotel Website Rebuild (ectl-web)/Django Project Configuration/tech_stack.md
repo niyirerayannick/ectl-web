@@ -1,0 +1,1 @@
+Django with `dj-database-url` for PostgreSQL/SQLite selection, `whitenoise` for static file serving, `django-tailwind-cli` (v4.3.3 standalone CLI, no Node.js) for CSS builds, `django-htmx`, `template-partials`, and `django-unfold` (listed before `admin` to theme it).

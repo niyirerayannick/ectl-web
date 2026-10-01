@@ -1,0 +1,1 @@
+No build or runtime — this module is a frozen reference. New entries are added by capturing a fresh page dump into `html/<page>.html`, taking three device screenshots into `screenshots/<page>_<device>.png`, and regenerating `tokens.json` / `tokens_summary.md` via the token extraction tooling outside this directory.

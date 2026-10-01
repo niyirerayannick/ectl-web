@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: design_reference
+title: Energicotel Design Reference & Token Archive
+scope:
+    - design_reference/
+source_files: []
+depends_on: []
+related_to: []

@@ -1,0 +1,1 @@
+Django project root configuration package providing environment-specific settings, URL routing, and WSGI entry points for the Energicotel application.

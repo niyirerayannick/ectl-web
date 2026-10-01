@@ -1,0 +1,1 @@
+Production runs through `config.wsgi.application` under Gunicorn; development uses `manage.py` which defaults to `config.settings.dev`. Database backend switches between PostgreSQL (when `DATABASE_URL` is set) and SQLite (`var/db.sqlite3`) otherwise. Static assets are built via the pinned Tailwind CLI binary cached in `.django_tailwind_cli/`.

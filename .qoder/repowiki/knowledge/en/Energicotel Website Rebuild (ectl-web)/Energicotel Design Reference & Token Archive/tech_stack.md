@@ -1,0 +1,1 @@
+WordPress 7.1.2 with Elementor 3.34.2 and the Royal Elementor Kit theme / Royal Elementor Addons; fonts loaded from Google Fonts (Inter, Kanit, Roboto, Helvetica, Lato, Poppins, Nunito Sans, Material Symbols Rounded).

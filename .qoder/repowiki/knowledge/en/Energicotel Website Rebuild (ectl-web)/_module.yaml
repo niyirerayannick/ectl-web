@@ -1,0 +1,16 @@
+schema_version: 1
+module_path: ""
+title: Energicotel Website Rebuild (ectl-web)
+scope:
+    - README.md
+    - CLAUDE.md
+    - .gitignore
+    - manage.py
+    - pytest.ini
+    - requirements/
+    - .env.example
+    - extract_design_tokens.py
+    - resume_extract.py
+source_files: []
+depends_on: []
+related_to: []

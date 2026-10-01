@@ -1,0 +1,1 @@
+Design reference archive for the energicotel.com WordPress/Elementor site, containing per-page HTML snapshots, responsive screenshots, and extracted design tokens.
