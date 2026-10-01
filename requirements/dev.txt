@@ -1,0 +1,5 @@
+-r base.txt
+
+# Testing (pytest + pytest-django, CLAUDE.md §9 Phase 1)
+pytest==9.1.1
+pytest-django==4.14.0

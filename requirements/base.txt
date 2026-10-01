@@ -1,0 +1,9 @@
+# Runtime dependencies — shared by development and production (CLAUDE.md §1).
+Django==5.2.17
+dj-database-url==3.1.2
+django-htmx==1.29.0
+django-tailwind-cli==4.8.1
+django-template-partials==25.3
+django-unfold==0.108.0
+python-dotenv==1.2.4
+whitenoise==6.12.0

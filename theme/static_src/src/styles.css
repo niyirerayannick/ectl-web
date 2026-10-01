@@ -1,0 +1,38 @@
+/*
+ * Energicotel (ECTL) — Tailwind CSS v4 entry point.
+ *
+ * CSS-first configuration: every design value in the project lives in the
+ * @theme block below; templates use token utilities (bg-brand-primary,
+ * text-heading, ...) and never arbitrary values (CLAUDE.md §5).
+ *
+ * Phase 2 fills the token values from design_reference/tokens.json.
+ *
+ * Built by:  python manage.py tailwind build
+ * Output:    theme/static_src/dist/css/styles.css (served as /static/css/styles.css)
+ * Included:  {% tailwind_css %} in templates/base.html
+ */
+
+@import "tailwindcss";
+
+/* Content sources — @source paths are relative to this file.
+ * Tailwind additionally auto-detects sources from the project root (the CLI's
+ * working directory), skipping .gitignore'd files; these make the intent
+ * explicit and keep the scan off reference material and vendored libraries. */
+@source "../../../templates";
+
+@source not "../../../design_reference";
+@source not "../../../static/js/vendor";
+
+@theme {
+  /* COLOURS — Phase 2: exact hex values from design_reference/tokens.json */
+
+  /* FONTS — Phase 2: same families as the live site, self-hosted */
+
+  /* TYPE SCALE — Phase 2: desktop values + responsive sizes from tokens.json */
+
+  /* SHAPE / LAYOUT — Phase 2: radii, shadows, container width */
+
+  /* BREAKPOINTS — match the Elementor defaults (tablet <=1024, mobile <=767) */
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1025px;
+}

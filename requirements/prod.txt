@@ -1,0 +1,5 @@
+-r base.txt
+
+# Production server and database (CLAUDE.md §1: Gunicorn behind Nginx, PostgreSQL).
+gunicorn>=23.0
+psycopg[binary]>=3.2,<4

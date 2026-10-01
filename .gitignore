@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Environment / secrets
+.env
+
+# Django runtime data (SQLite fallback lives in var/)
+var/*
+!var/.gitkeep
+staticfiles/
+db.sqlite3
+db.sqlite3-journal
+
+# Tailwind build output — regenerate with: python manage.py tailwind build
+theme/static_src/dist/*
+!theme/static_src/dist/.gitkeep
+
+# Tailwind CLI binary (auto-downloaded by django-tailwind-cli)
+.django_tailwind_cli/
+
+# Test / tooling caches
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editors / OS
+.idea/
+.vscode/
+Thumbs.db
+.DS_Store
