@@ -53,6 +53,23 @@ class PhaseFourPagesTests(TestCase):
                 response = self.client.get(path)
                 self.assertEqual(response.status_code, 200)
 
+    def test_business_unit_htmx_swap_returns_replaceable_current_unit_content(self):
+        power = self.client.get(reverse("unit-detail", args=["power"]))
+        gas = self.client.get(
+            reverse("unit-detail", args=["gas"]),
+            headers={"HX-Request": "true", "HX-Target": "unit-content"},
+        )
+
+        self.assertContains(power, "Keya Hydropower Plant")
+        self.assertContains(power, 'hx-select="#unit-content"', html=False)
+        self.assertEqual(gas.status_code, 200)
+        self.assertNotContains(gas, "<html", html=False)
+        self.assertContains(gas, '<div id="unit-content">', html=False)
+        self.assertContains(gas, "ECTL Gas", html=False)
+        self.assertContains(gas, "Gas distribution infrastructure", html=False)
+        self.assertContains(gas, 'aria-current="page"', html=False)
+        self.assertNotContains(gas, "Keya Hydropower Plant", html=False)
+
     def test_news_list_and_detail_exclude_unapproved_injected_ids(self):
         response = self.client.get(reverse("news-list"))
         self.assertContains(response, "ECTL lists corporate bond")

@@ -9,6 +9,16 @@ function syncNavState() {
 		link.setAttribute("aria-current", isCurrent ? "page" : "false");
 		link.classList.toggle("is-current", isCurrent);
 	});
+	document.querySelectorAll(".unit-sidebar a").forEach((link) => {
+		const href = new URL(link.href).pathname.replace(/\/+$/, "") || "/";
+		const isCurrent = href === pathname;
+		link.classList.toggle("is-current", isCurrent);
+		if (isCurrent) {
+			link.setAttribute("aria-current", "page");
+		} else {
+			link.removeAttribute("aria-current");
+		}
+	});
 
 	const toggle = document.getElementById("mobile-nav-toggle");
 	if (toggle && toggle.checked) {
