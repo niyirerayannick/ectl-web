@@ -2,15 +2,19 @@
 
 function syncNavState() {
 	const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
-	const links = document.querySelectorAll(".nav-link, .drawer-nav a");
+	const links = document.querySelectorAll(".nav-link[href], .drawer-nav a[href]");
 	links.forEach((link) => {
-		const href = new URL(link.href).pathname.replace(/\/+$/, "") || "/";
+		const href = new URL(link.href, window.location.href).pathname.replace(/\/+$/, "") || "/";
 		const isCurrent = href === pathname || (href !== "/" && pathname.startsWith(href));
-		link.setAttribute("aria-current", isCurrent ? "page" : "false");
+		if (isCurrent) {
+			link.setAttribute("aria-current", "page");
+		} else {
+			link.removeAttribute("aria-current");
+		}
 		link.classList.toggle("is-current", isCurrent);
 	});
 	document.querySelectorAll(".unit-sidebar a").forEach((link) => {
-		const href = new URL(link.href).pathname.replace(/\/+$/, "") || "/";
+		const href = new URL(link.href, window.location.href).pathname.replace(/\/+$/, "") || "/";
 		const isCurrent = href === pathname;
 		link.classList.toggle("is-current", isCurrent);
 		if (isCurrent) {
@@ -36,9 +40,12 @@ function syncNavState() {
 }
 
 function handlePageSwap(root = document) {
+	syncNavState();
 	const main = root.querySelector("main#main");
-	if (!main) return;
-	const heading = main.querySelector("h1");
+	const heading = main?.querySelector("h1") || root.querySelector("h1");
+	if (window.location.pathname.startsWith("/business-units/") && heading) {
+		document.title = `${heading.textContent.trim()} | Energicotel PLC`;
+	}
 	if (heading) {
 		heading.setAttribute("tabindex", "-1");
 		heading.focus({ preventScroll: true });
@@ -48,7 +55,6 @@ function handlePageSwap(root = document) {
 	if (announcer) {
 		announcer.textContent = title;
 	}
-	syncNavState();
 }
 
 function initialisePage(root = document) {
@@ -120,6 +126,15 @@ document.addEventListener("htmx:afterRequest", () => {
 	}
 });
 document.addEventListener("htmx:afterSwap", (event) => handlePageSwap(event.detail.target || document));
+document.addEventListener("htmx:afterSettle", () => {
+	syncNavState();
+	if (window.location.pathname.startsWith("/business-units/")) {
+		const heading = document.querySelector("#unit-content h1");
+		if (heading) {
+			document.title = `${heading.textContent.trim()} | Energicotel PLC`;
+		}
+	}
+});
 document.addEventListener("htmx:responseError", () => {
 	window.location.reload();
 });
