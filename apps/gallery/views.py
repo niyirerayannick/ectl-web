@@ -23,6 +23,8 @@ class GalleryView(HtmxFragmentMixin, TemplateView):
 	def get_template_names(self):
 		names = super().get_template_names()
 		if self.request.htmx and not getattr(self.request.htmx, "history_restore_request", False):
+			if self.request.htmx.boosted:
+				return ["gallery/index.html#main"]
 			return ["gallery/index.html#gallery-grid"]
 		return names
 

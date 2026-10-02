@@ -18,6 +18,8 @@ class NewsListView(HtmxFragmentMixin, ListView):
 	def get_template_names(self):
 		names = super().get_template_names()
 		if self.request.htmx and not getattr(self.request.htmx, "history_restore_request", False):
+			if self.request.htmx.boosted:
+				return ["news/list.html#main"]
 			return ["news/list.html#news-list"]
 		return names
 

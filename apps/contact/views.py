@@ -16,6 +16,8 @@ class ContactView(HtmxFragmentMixin, TemplateView):
 	def get_template_names(self):
 		names = super().get_template_names()
 		if self.request.htmx and not getattr(self.request.htmx, "history_restore_request", False):
+			if self.request.htmx.boosted:
+				return ["contact/index.html#main"]
 			return ["contact/index.html#contact-form"]
 		return names
 

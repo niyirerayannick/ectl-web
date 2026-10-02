@@ -7,7 +7,7 @@
 <main id="main" class="min-h-screen">
 	{% include "components/page_banner.html" with title="Gallery" eyebrow="Media Center" image="media/engineering-project.webp" %}
 	<section class="section-wrap gallery-section">
-		{% partialdef gallery-grid %}
+		{% partialdef gallery-grid inline %}
 		<div id="gallery-grid" class="gallery-grid" x-data="{openImage(src, alt){$dispatch('gallery-open',{src,alt})}}">
 			{% for image in images %}<button class="gallery-tile gallery-tile--{{ forloop.counter }}" type="button" @click="openImage('{% static image.src %}', '{{ image.alt|escapejs }}')"><img src="{% static image.src %}" alt="{{ image.alt }}" loading="lazy"><span>{{ image.caption }}</span></button>{% endfor %}
 			<button class="gallery-load-more btn btn--outline" type="button" hx-get="?page=2" hx-target="#gallery-grid" hx-swap="innerHTML" hx-trigger="revealed">Load more</button>

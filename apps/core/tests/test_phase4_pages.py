@@ -85,6 +85,25 @@ class PhaseFourPagesTests(TestCase):
         self.assertContains(response, "Solar PV feasibility and system design", html=False)
         self.assertNotContains(response, "Keya Hydropower Plant", html=False)
 
+    def test_boosted_top_menu_routes_return_main_fragments(self):
+        routes = (
+            (reverse("board"), "Felicien MUVUNYI"),
+            (reverse("management"), "Pascaline UMUTESI"),
+            (reverse("news-list"), "news-grid"),
+            (reverse("gallery"), "gallery-tile"),
+            (reverse("contact"), "Contact Energicotel"),
+        )
+        for path, expected_content in routes:
+            with self.subTest(path=path):
+                response = self.client.get(
+                    path,
+                    headers={"HX-Request": "true", "HX-Boosted": "true", "HX-Target": "main"},
+                )
+                self.assertEqual(response.status_code, 200)
+                self.assertNotContains(response, "<html", html=False)
+                self.assertContains(response, '<main id="main"', html=False)
+                self.assertContains(response, expected_content, html=False)
+
     def test_unit_pages_do_not_render_dictionary_methods_as_content(self):
         for slug in ("power", "gas", "engineering", "solar"):
             with self.subTest(slug=slug):
