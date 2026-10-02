@@ -15,6 +15,8 @@ class UnitDetailView(HtmxFragmentMixin, TemplateView):
 	def get_template_names(self):
 		names = super().get_template_names()
 		if self.request.htmx and not getattr(self.request.htmx, "history_restore_request", False):
+			if self.request.htmx.boosted:
+				return ["units/detail.html#main"]
 			return ["units/detail.html#unit-content"]
 		return names
 

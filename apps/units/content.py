@@ -6,9 +6,9 @@ UNITS = {
         "intro": "Energicotel operates as an independent power producer, generating renewable electricity through three hydropower plants in Rwanda's Western Province. The plants provide 3.2 MW of installed capacity to the national grid.",
         "sections": [
             {"heading": "Introduction", "body": "ECTL Power develops, owns, and operates small hydropower plants. The portfolio combines local generation with practical operations and maintenance expertise."},
-            {"heading": "Our Operational Assets", "items": ["Keya Hydropower Plant — 2.2 MW", "Nkora Hydropower Plant — 0.68 MW", "Cyimbili Hydropower Plant — 0.3 MW"]},
+            {"heading": "Our Operational Assets", "highlights": ["Keya Hydropower Plant — 2.2 MW", "Nkora Hydropower Plant — 0.68 MW", "Cyimbili Hydropower Plant — 0.3 MW"]},
             {"heading": "Engineering & Rehabilitation Expertise", "body": "Our teams maintain plant availability through planned rehabilitation, electromechanical works, and operational improvements."},
-            {"heading": "Scope of Works", "items": ["Hydropower operations and maintenance", "Plant rehabilitation and performance improvement", "Electrical and mechanical engineering support"]},
+            {"heading": "Scope of Works", "highlights": ["Hydropower operations and maintenance", "Plant rehabilitation and performance improvement", "Electrical and mechanical engineering support"]},
             {"heading": "Investment", "body": "ECTL continues to invest in resilient renewable generation and regional opportunities, including the Lihanda hydropower project under development in Kenya."},
         ],
         "images": [("media/keya-hydropower.webp", "Keya hydropower plant"), ("media/power-turbine.webp", "Hydropower turbine equipment"), ("media/river-project.webp", "River infrastructure at a hydropower site")],
@@ -18,7 +18,7 @@ UNITS = {
         "intro": "ECTL Gas is preparing clean and dependable gas supply solutions to support households, businesses, and Rwanda's growing energy needs.",
         "sections": [
             {"heading": "Strategic Expansion", "body": "The company is advancing its gas business through a phased market entry, with launch timing and operating status to be confirmed by ECTL."},
-            {"heading": "Our Services & Solutions", "items": ["Wholesale supply and distribution", "Refilling and storage solutions", "Flexible distribution models for residential and commercial customers"]},
+            {"heading": "Our Services & Solutions", "highlights": ["Wholesale supply and distribution", "Refilling and storage solutions", "Flexible distribution models for residential and commercial customers"]},
         ],
         "images": [("media/gas-distribution.webp", "Gas distribution infrastructure"), ("media/gas-storage.webp", "Gas storage equipment")],
     },
@@ -42,7 +42,7 @@ UNITS = {
         "intro": "ECTL Solar is focused on expanding access to dependable renewable energy through well-designed solar power solutions.",
         "sections": [
             {"heading": "Our Solar Mission", "body": "We aim to deliver reliable and affordable solar energy systems that support homes, businesses, and public services."},
-            {"heading": "Core Competencies", "items": ["Solar PV feasibility and system design", "Grid-connected and off-grid solutions", "Installation, commissioning, and maintenance", "Energy storage integration"]},
+            {"heading": "Core Competencies", "highlights": ["Solar PV feasibility and system design", "Grid-connected and off-grid solutions", "Installation, commissioning, and maintenance", "Energy storage integration"]},
         ],
         "images": [("media/solar-panels.webp", "Solar panels at an ECTL energy site"), ("media/solar-installation.webp", "Solar installation work")],
     },

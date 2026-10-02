@@ -3,8 +3,10 @@ from datetime import datetime
 from django.test import TestCase
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.html import conditional_escape
 
 from apps.news.models import Post
+from apps.units.content import UNITS
 
 
 class PhaseFourPagesTests(TestCase):
@@ -69,6 +71,30 @@ class PhaseFourPagesTests(TestCase):
         self.assertContains(gas, "Gas distribution infrastructure", html=False)
         self.assertContains(gas, 'aria-current="page"', html=False)
         self.assertNotContains(gas, "Keya Hydropower Plant", html=False)
+
+    def test_boosted_unit_navigation_returns_main_fragment(self):
+        response = self.client.get(
+            reverse("unit-detail", args=["solar"]),
+            headers={"HX-Request": "true", "HX-Boosted": "true", "HX-Target": "main"},
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "<html", html=False)
+        self.assertContains(response, '<main id="main"', html=False)
+        self.assertContains(response, "ECTL Solar", html=False)
+        self.assertContains(response, "Solar PV feasibility and system design", html=False)
+        self.assertNotContains(response, "Keya Hydropower Plant", html=False)
+
+    def test_unit_pages_do_not_render_dictionary_methods_as_content(self):
+        for slug in ("power", "gas", "engineering", "solar"):
+            with self.subTest(slug=slug):
+                response = self.client.get(reverse("unit-detail", args=[slug]))
+                self.assertEqual(response.status_code, 200)
+                self.assertNotContains(response, "('heading',", html=False)
+                self.assertNotContains(response, "('body',", html=False)
+                for section in UNITS[slug]["sections"]:
+                    heading = str(conditional_escape(section["heading"])).encode()
+                    self.assertEqual(response.content.count(heading), 1)
 
     def test_news_list_and_detail_exclude_unapproved_injected_ids(self):
         response = self.client.get(reverse("news-list"))
