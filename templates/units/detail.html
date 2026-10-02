@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static partials %}
+{% block title %}{{ unit.name }} | Energicotel PLC{% endblock %}
+{% block content %}
+{% partialdef main %}
+<title>{{ unit.name }} | Energicotel PLC</title>
+<main id="main" class="min-h-screen">
+	{% include "components/page_banner.html" with title=unit.name eyebrow="What we do" subtitle=unit.tagline image=unit.image %}
+	<div class="section-wrap unit-layout">
+		{% partialdef unit-content %}
+		<div id="unit-content" class="unit-content">
+			<div class="unit-intro"><p>{{ unit.intro }}</p></div>
+			{% include "components/image_slider.html" with images=unit.images %}
+			{% for section in unit.sections %}<section class="unit-section"><h2>{{ section.heading }}</h2>{% if section.body %}<p>{{ section.body }}</p>{% endif %}{% if section.items %}<ul class="check-list">{% for item in section.items %}<li>{{ item }}</li>{% endfor %}</ul>{% endif %}{% if section.projects %}<div class="project-grid">{% for project in section.projects %}<article class="project-item"><h3>{{ project.title }}</h3><p>{{ project.role }}</p><p>{{ project.scope }}</p><strong>{{ project.value }}</strong></article>{% endfor %}</div>{% endif %}</section>{% endfor %}
+			{% include "components/cta_banner.html" with title="Let's build the future together." body="Talk with our team about your next project." %}
+		</div>
+		{% endpartialdef %}
+		{% include "components/unit_sidebar.html" with units=units current=slug %}
+	</div>
+</main>
+{% endpartialdef %}
+{% partial main %}
+{% endblock %}

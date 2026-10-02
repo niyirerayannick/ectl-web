@@ -12,17 +12,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&family=Roboto:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     {# Tailwind CSS v4 — built by `python manage.py tailwind build` (CLAUDE.md §5). #}
     {% tailwind_css %}
+    <link rel="stylesheet" href="{% static 'css/phase4.css' %}">
     {# Vendored HTMX 2 + Alpine.js 3 — progressive enhancement only (CLAUDE.md §0.4, §7). #}
     <script src="{% static 'js/vendor/htmx.min.js' %}" defer></script>
     <script src="{% static 'js/vendor/alpine.min.js' %}" defer></script>
     <script src="{% static 'js/app.js' %}" defer></script>
 </head>
-<body class="bg-white font-body text-body leading-body">
+<body class="bg-white font-body text-body leading-body"
+      hx-boost="true"
+      hx-target="#main"
+      hx-select="#main"
+      hx-swap="outerHTML show:window:top"
+      hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+      hx-indicator="#page-progress">
+    <div id="page-progress" class="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left scale-x-0 bg-brand-primary transition-transform duration-200" aria-live="polite" aria-label="Page loading"></div>
     {% include "partials/topbar.html" %}
     {% include "partials/header.html" %}
-    <main id="main" class="min-h-screen">
-        {% block content %}{% endblock %}
-    </main>
+    {% block content %}{% endblock %}
     {% include "partials/footer.html" %}
     {% include "partials/floating_call.html" %}
 </body>

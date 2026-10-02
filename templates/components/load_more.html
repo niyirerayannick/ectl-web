@@ -1,0 +1,1 @@
+{% if page_obj.has_next %}<a class="btn btn--outline" href="?page={{ page_obj.next_page_number }}" hx-get="?page={{ page_obj.next_page_number }}" hx-target="#news-list" hx-swap="innerHTML" hx-push-url="true">Load More</a>{% else %}<p class="end-of-content">End of Content.</p>{% endif %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load partials %}
+{% block title %}{{ title }} | Energicotel PLC{% endblock %}
+{% block content %}
+{% partialdef main %}
+<title>{{ title }} | Energicotel PLC</title>
+<main id="main" class="min-h-screen">
+	{% include "components/page_banner.html" with title=title eyebrow="Who we are" image="media/hydropower-site.webp" %}
+	<section class="section-wrap people-section"><div class="section-heading section-heading--center"><p>Energicotel PLC</p><h2>{{ title }}</h2></div><div class="people-grid people-grid--{{ group }}">{% for person in people %}{% include "components/person_card.html" with person=person %}{% endfor %}</div></section>
+</main>
+{% endpartialdef %}
+{% partial main %}
+{% endblock %}

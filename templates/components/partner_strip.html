@@ -1,0 +1,4 @@
+{% load static %}
+<div class="partner-strip" aria-label="Our partners">
+    {% for image, alt in partners %}<div class="partner-strip__item"><img src="{% static image %}" alt="{{ alt }}" loading="lazy"></div>{% endfor %}
+</div>

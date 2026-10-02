@@ -1,0 +1,5 @@
+{% load static %}
+<article class="person-card">
+    <div class="person-card__image"><img src="{% static person.image %}" alt="{{ person.name }}" loading="lazy"></div>
+    <div class="person-card__text"><h2>{{ person.name }}</h2><p>{{ person.role }}</p></div>
+</article>

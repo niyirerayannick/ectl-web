@@ -1,0 +1,4 @@
+<div class="lightbox" x-data="{open:false,src:'',alt:''}" @keydown.escape.window="open=false" @keydown.left.window="if(open){$dispatch('gallery-prev')}" @keydown.right.window="if(open){$dispatch('gallery-next')}" @gallery-open.window="src=$event.detail.src;alt=$event.detail.alt;open=true" x-show="open" x-cloak>
+    <button class="lightbox__close" type="button" @click="open=false" aria-label="Close image">&times;</button>
+    <img :src="src" :alt="alt">
+</div>

@@ -1,0 +1,4 @@
+<aside class="unit-sidebar">
+    <section><h2>What we do</h2><ul>{% for key, item in units.items %}<li><a class="{% if key == current %}is-current{% endif %}" href="/business-units/{{ key }}/" hx-get="/business-units/{{ key }}/" hx-target="#unit-content" hx-swap="innerHTML" hx-push-url="true">{{ item.name }}</a></li>{% endfor %}</ul></section>
+    <section class="unit-sidebar__contact"><h2>Contact us</h2><p>{{ site_contact.address }}</p><p>{{ site_contact.hours }}</p>{% for phone in site_contact.phones %}<p><a href="tel:{{ phone|cut:' '|cut:'('|cut:')' }}">{{ phone }}</a></p>{% endfor %}{% for email in site_contact.emails %}<p><a href="mailto:{{ email }}">{{ email }}</a></p>{% endfor %}</section>
+</aside>

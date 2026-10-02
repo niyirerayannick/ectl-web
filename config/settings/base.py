@@ -68,6 +68,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # Exposes request.htmx to views and templates (CLAUDE.md §7).
     "django_htmx.middleware.HtmxMiddleware",
+    "apps.core.middleware.HXRequestVaryMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"

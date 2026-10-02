@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load partials %}
+{% block title %}News and Events | Energicotel PLC{% endblock %}
+{% block content %}
+{% partialdef main %}
+<title>News and Events | Energicotel PLC</title>
+<main id="main" class="min-h-screen">
+	{% include "components/page_banner.html" with title="News and Events" eyebrow="Media Center" image="media/bond-listing.webp" %}
+	<section class="section-wrap news-section">
+		<div class="news-layout">
+			<div>
+				<div class="news-filters" aria-label="News filters">
+					<a class="chip is-active" href="?category=all" hx-get="?category=all" hx-target="#news-list" hx-swap="innerHTML" hx-push-url="true">All</a>
+					<a class="chip" href="?category=Corporate News" hx-get="?category=Corporate News" hx-target="#news-list" hx-swap="innerHTML" hx-push-url="true">Corporate News</a>
+					<a class="chip" href="?category=Events" hx-get="?category=Events" hx-target="#news-list" hx-swap="innerHTML" hx-push-url="true">Events</a>
+				</div>
+				{% partialdef news-list %}
+				<div id="news-list" class="news-list">
+					<div class="news-grid">{% for post in posts %}{% include "components/post_card.html" with post=post %}{% empty %}<p class="empty-state">There are no published ECTL news articles yet.</p>{% endfor %}</div>
+					<nav class="pagination" aria-label="News pages">
+						{% if page_obj.has_previous %}<a class="btn btn--outline" href="?page={{ page_obj.previous_page_number }}">Previous</a>{% endif %}
+						{% if page_obj.has_next %}
+							<a class="btn btn--outline" href="?page={{ page_obj.next_page_number }}" hx-get="?page={{ page_obj.next_page_number }}" hx-target="#news-list" hx-swap="innerHTML" hx-push-url="true">Load More</a>
+						{% else %}
+							<p class="end-of-content">End of Content.</p>
+						{% endif %}
+					</nav>
+				</div>
+				{% endpartialdef %}
+			</div>
+			<aside class="news-sidebar"><h2>Corporate News</h2><p>Announcements and updates from Energicotel PLC.</p><h3>Recent Posts</h3>{% for post in posts|slice:":4" %}<a href="{% url 'news-detail' post.slug %}">{{ post.title }}</a>{% empty %}<p>New updates will appear here.</p>{% endfor %}</aside>
+		</div>
+	</section>
+</main>
+{% endpartialdef %}
+{% partial main %}
+{% endblock %}

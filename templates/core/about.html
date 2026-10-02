@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static partials %}
+{% block title %}About | Energicotel PLC{% endblock %}
+{% block content %}
+{% partialdef main %}
+<title>About | Energicotel PLC</title>
+<main id="main" class="min-h-screen">
+	{% include "components/page_banner.html" with title="About" eyebrow="Energicotel PLC" image="media/hydropower-site.webp" %}
+	<section class="home-about section-wrap"><div class="home-about__copy"><p class="eyebrow">Energicotel PLC - Your Energy Provider</p><h2>Who We Are</h2><p>{{ about_copy }}</p><div class="button-row">{% include "components/btn.html" with variant="primary" href="/about/board/" label="Meet our Board" %}{% include "components/btn.html" with variant="outline" href="https://epcafrica.com" label="About EPC Africa" %}</div></div><div class="home-about__collage">{% for image, alt in about_images %}<img class="home-about__image home-about__image--{{ forloop.counter }}" src="{% static image %}" alt="{{ alt }}" loading="lazy">{% endfor %}</div></section>
+	<section class="values-band"><div class="section-wrap"><div class="section-heading section-heading--light"><p>What guides us</p><h2>Vision, Mission &amp; Values</h2></div><div class="value-grid">{% for item in values %}{% include "components/value_card.html" with item=item primary=forloop.first %}{% endfor %}</div></div></section>
+	<section class="stats-section section-wrap"><div class="section-heading section-heading--center"><p>Overview</p><h2>What We've Achieved</h2></div><div class="stats-grid">{% for stat in stats %}{% include "components/stat_counter.html" with stat=stat %}{% endfor %}</div></section>
+	{% include "components/cta_banner.html" with title="Work With Us!" body="Have an upcoming project? Looking for quality and affordable energy and engineering services?" %}
+</main>
+{% endpartialdef %}
+{% partial main %}
+{% endblock %}

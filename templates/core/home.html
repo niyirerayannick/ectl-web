@@ -1,24 +1,24 @@
 {% extends "base.html" %}
-
-{% block title %}Energicotel PLC — project scaffold{% endblock %}
-
+{% load static partials %}
+{% block title %}ENERGICOTEL (ECTL) PLC{% endblock %}
 {% block content %}
-{# Placeholder page proving the stack renders; no real pages until Phase 2+ #}
-{# (CLAUDE.md §9). Utility classes below are scaffold-neutral placeholders — #}
-{# Phase 2 replaces them with token utilities from the @theme block. #}
-<div class="mx-auto max-w-3xl px-6 py-16 text-center">
-    <p class="text-sm font-semibold uppercase tracking-widest text-gray-500">
-        Phase 1 — project scaffold
-    </p>
-    <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900">
-        Energicotel PLC
-    </h1>
-    <p class="mt-4 text-gray-600">
-        Django 5.2 · Tailwind CSS v4 · HTMX 2 · Alpine.js 3 · WhiteNoise · django-unfold admin
-    </p>
-    <p class="mt-2 text-sm text-gray-500">
-        Pages are built from Phase 2 onwards — see CLAUDE.md §9.
-        Admin: <a class="underline" href="/admin/">/admin/</a>
-    </p>
-</div>
+{% partialdef main %}
+<title>ENERGICOTEL (ECTL) PLC</title>
+<main id="main" class="min-h-screen">
+    <section class="home-hero" data-home-hero>
+        {% for slide in slides %}<article class="home-hero__slide{% if forloop.first %} is-active{% endif %}" style="--hero-image:url('{% static slide.image %}')">
+            <div class="home-hero__shade"></div><div class="home-hero__content"><p>{{ slide.eyebrow }}</p><h1>{{ slide.title }}</h1><p class="home-hero__description">{{ slide.body }}</p><a class="btn btn--light" href="{{ slide.link }}">{{ slide.label }} <span aria-hidden="true">&#8594;</span></a></div>
+        </article>{% endfor %}
+        <div class="home-hero__controls"><button type="button" data-hero-prev aria-label="Previous slide">&#8249;</button><div data-hero-dots></div><button type="button" data-hero-next aria-label="Next slide">&#8250;</button></div>
+    </section>
+    <section class="home-about section-wrap">
+        <div class="home-about__copy"><p class="eyebrow">Energicotel PLC - Your Energy Provider</p><h2>Who We Are</h2><p>{{ about_copy }}</p><div class="button-row">{% include "components/btn.html" with variant="primary" href="/about/" label="About Us" %}<a class="btn btn--outline" href="https://epcafrica.com" target="_blank" rel="noopener noreferrer">About EPC Africa</a></div></div>
+        <div class="home-about__collage">{% for image, alt in about_images %}<img class="home-about__image home-about__image--{{ forloop.counter }}" src="{% static image %}" alt="{{ alt }}" loading="lazy">{% endfor %}</div>
+    </section>
+    <section class="values-band"><div class="section-wrap"><div class="section-heading section-heading--light"><p>What guides us</p><h2>Vision, Mission &amp; Values</h2></div><div class="value-grid">{% for item in values %}{% include "components/value_card.html" with item=item primary=forloop.first %}{% endfor %}</div></div></section>
+    <section class="section-wrap business-section"><div class="section-heading"><p>Our expertise</p><h2>Our Business Units</h2></div><div class="unit-grid">{% for slug, unit in unit_list.items %}{% include "components/unit_card.html" with slug=slug unit=unit %}{% endfor %}</div></section>
+    <section class="partners-section"><div class="section-wrap"><div class="section-heading section-heading--center"><p>Working together</p><h2>Our Partners</h2></div>{% include "components/partner_strip.html" with partners=partners %}</div></section>
+</main>
+{% endpartialdef %}
+{% partial main %}
 {% endblock %}

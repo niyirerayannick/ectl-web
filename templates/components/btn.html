@@ -1,0 +1,7 @@
+{% if variant == 'outline' %}
+<a class="btn btn--outline" href="{{ href }}">{{ label }}</a>
+{% elif variant == 'light' %}
+<a class="btn btn--light" href="{{ href }}">{{ label }}</a>
+{% else %}
+<a class="btn btn--primary" href="{{ href }}">{{ label }}</a>
+{% endif %}

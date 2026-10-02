@@ -1,0 +1,9 @@
+{% load static %}
+<section class="page-banner" style="--banner-image: url('{% static image %}')">
+    <div class="page-banner__shade"></div>
+    <div class="page-banner__content">
+        {% if eyebrow %}<p class="page-banner__eyebrow">{{ eyebrow }}</p>{% endif %}
+        <h1>{{ title }}</h1>
+        {% if subtitle %}<p>{{ subtitle }}</p>{% endif %}
+    </div>
+</section>

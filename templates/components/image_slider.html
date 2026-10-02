@@ -1,0 +1,5 @@
+{% load static %}
+<div class="image-slider" data-image-slider>
+    <div class="image-slider__track">{% for image in images %}<figure><img src="{% static image.0 %}" alt="{{ image.1 }}" loading="lazy"></figure>{% endfor %}</div>
+    {% if images|length > 1 %}<button class="image-slider__arrow image-slider__arrow--prev" type="button" aria-label="Previous image" data-slide-prev>&#8249;</button><button class="image-slider__arrow image-slider__arrow--next" type="button" aria-label="Next image" data-slide-next>&#8250;</button>{% endif %}
+</div>

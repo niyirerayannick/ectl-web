@@ -1,0 +1,5 @@
+{% load static %}
+<a class="unit-card" href="/business-units/{{ slug }}/">
+    <span class="unit-card__image"><img src="{% static unit.image %}" alt="" loading="lazy"></span>
+    <span class="unit-card__body"><span class="unit-card__label">Business unit</span><strong>{{ unit.name }}</strong><span>{{ unit.tagline }}</span><span class="unit-card__arrow" aria-hidden="true">&#8594;</span></span>
+</a>

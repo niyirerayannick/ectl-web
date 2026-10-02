@@ -1,4 +1,4 @@
-"""Phase 1 smoke tests: the scaffold boots and the stack is wired up (CLAUDE.md §9)."""
+"""Smoke tests for the shared ECTL site shell and Phase 4 routes."""
 
 import pytest
 from django.conf import settings
@@ -13,7 +13,7 @@ class TestHomeView(TestCase):
     def test_home_page_renders(self):
         response = self.client.get(reverse("home"))
         assert response.status_code == 200
-        assert b"Phase 1" in response.content
+        assert b"Powering Africa&#x27;s Future Sustainably" in response.content or b"Powering Africa's Future Sustainably" in response.content
 
     def test_home_page_links_built_css(self):
         response = self.client.get(reverse("home"))
@@ -28,6 +28,21 @@ class TestHomeView(TestCase):
         # HtmxMiddleware annotates the request; the page renders either way.
         response = self.client.get(reverse("home"), headers={"HX-Request": "true"})
         assert response.status_code == 200
+
+    def test_htmx_fragment_response_contains_main_only_and_vary_header(self):
+        response = self.client.get(reverse("home"), headers={"HX-Request": "true"})
+        assert response.status_code == 200
+        assert b"<html" not in response.content.lower()
+        assert b"<main id=\"main\"" in response.content
+        assert b"<title>" in response.content
+        assert "HX-Request" in response.headers.get("Vary", "")
+
+    def test_full_document_response_remains_accessible_without_js(self):
+        response = self.client.get(reverse("home"))
+        assert response.status_code == 200
+        assert b"<html" in response.content.lower()
+        assert b"<nav" in response.content.lower()
+        assert b"href=\"/about/\"" in response.content
 
 
 class TestAdmin(TestCase):
