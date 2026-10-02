@@ -10,6 +10,7 @@ class Post(models.Model):
 	excerpt = models.TextField(blank=True)
 	body = models.TextField(blank=True)
 	cover = models.CharField(max_length=300, blank=True)
+	cover_alt = models.CharField(max_length=300, blank=True)
 	published_at = models.DateTimeField()
 	status = models.CharField(max_length=20, default="publish")
 	category = models.CharField(max_length=100, default="Corporate News")

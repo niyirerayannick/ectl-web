@@ -133,6 +133,7 @@ class Command(BaseCommand):
                     "excerpt": excerpt,
                     "body": body,
                     "cover": cover,
+                    "cover_alt": title if cover else "",
                     "published_at": published_at,
                     "status": "publish",
                     "category": "Investor Relations" if post_id == 2734 else "Corporate News",

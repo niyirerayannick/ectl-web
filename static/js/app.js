@@ -43,7 +43,10 @@ function handlePageSwap(root = document) {
 	syncNavState();
 	const main = root.querySelector("main#main");
 	const heading = main?.querySelector("h1") || root.querySelector("h1");
-	if (window.location.pathname.startsWith("/business-units/") && heading) {
+	const fragmentTitle = root.querySelector("title") || main?.querySelector("title");
+	if (fragmentTitle?.textContent.trim()) {
+		document.title = fragmentTitle.textContent.trim();
+	} else if (window.location.pathname.startsWith("/business-units/") && heading) {
 		document.title = `${heading.textContent.trim()} | Energicotel PLC`;
 	}
 	if (heading) {
@@ -128,11 +131,9 @@ document.addEventListener("htmx:afterRequest", () => {
 document.addEventListener("htmx:afterSwap", (event) => handlePageSwap(event.detail.target || document));
 document.addEventListener("htmx:afterSettle", () => {
 	syncNavState();
-	if (window.location.pathname.startsWith("/business-units/")) {
-		const heading = document.querySelector("#unit-content h1");
-		if (heading) {
-			document.title = `${heading.textContent.trim()} | Energicotel PLC`;
-		}
+	const fragmentTitle = document.querySelector("#main > title");
+	if (fragmentTitle?.textContent.trim()) {
+		document.title = fragmentTitle.textContent.trim();
 	}
 });
 document.addEventListener("htmx:responseError", () => {

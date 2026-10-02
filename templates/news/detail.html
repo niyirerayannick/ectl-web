@@ -6,7 +6,7 @@
 <title>{{ post.title }} | Energicotel PLC</title>
 <main id="main" class="min-h-screen">
 	{% include "components/page_banner.html" with title="News and Events" eyebrow="Media Center" image="media/bond-listing.webp" %}
-	<article class="section-wrap news-detail-layout"><div class="news-article"><p class="post-card__meta">{{ post.published_at|date:'F j, Y' }} <span>{{ post.category }}</span></p><h1>{{ post.title }}</h1>{% if post.cover %}<img class="news-article__cover" src="{% static post.cover %}" alt="" fetchpriority="high">{% endif %}<div class="prose-content">{{ post.body|safe }}</div><div class="article-pagination"><a href="{% url 'news-list' %}">&#8592; All News</a></div></div><aside class="news-sidebar"><h2>Most Recent Posts</h2>{% for recent in recent_posts %}<a href="{% url 'news-detail' recent.slug %}">{{ recent.title }}</a>{% empty %}<p>More corporate updates coming soon.</p>{% endfor %}</aside></article>
+	<article class="section-wrap news-detail-layout"><div class="news-article"><p class="post-card__meta">{{ post.published_at|date:'F j, Y' }} <span>{{ post.category }}</span></p><h1>{{ post.title }}</h1>{% if post.cover %}<img class="news-article__cover" src="{% static post.cover %}" alt="{{ post.cover_alt }}" fetchpriority="high">{% endif %}<div class="prose-content">{{ post.body|safe }}</div><div class="article-pagination"><a href="{% url 'news-list' %}">&#8592; All News</a></div></div><aside class="news-sidebar"><h2>Most Recent Posts</h2>{% for recent in recent_posts %}<a href="{% url 'news-detail' recent.slug %}">{{ recent.title }}</a>{% empty %}<p>More corporate updates coming soon.</p>{% endfor %}</aside></article>
 </main>
 {% endpartialdef %}
 {% partial main %}

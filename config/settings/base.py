@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "apps.core.legacy_redirects.LegacyWordPressRedirectMiddleware",
     # WhiteNoise must sit directly after SecurityMiddleware.
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -93,6 +94,7 @@ TEMPLATES = [
                 # Exposes the site_contact dict; Phase 3 replaces it with the
                 # SiteSettings singleton model (CLAUDE.md §3, §4.1).
                 "apps.core.context_processors.site",
+                "apps.core.context_processors.seo",
             ],
         },
     },
@@ -173,3 +175,5 @@ TAILWIND_CLI_VERSION = "4.3.3"
 # ---------------------------------------------------------------------------
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SITE_URL = os.environ.get("SITE_URL", "https://www.energicotel.com").rstrip("/")

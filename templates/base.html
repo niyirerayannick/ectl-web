@@ -1,11 +1,20 @@
-{% load static tailwind_cli %}
+{% load static tailwind_cli seo_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{% block meta_description %}Energicotel PLC — energy company listed on the Rwanda Stock Exchange.{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{{ seo_description }}{% endblock %}">
     <title>{% block title %}Energicotel PLC{% endblock %}</title>
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta property="og:type" content="{% if request.resolver_match.url_name == 'news-detail' %}article{% else %}website{% endif %}">
+    <meta property="og:site_name" content="Energicotel PLC">
+    <meta property="og:title" content="{{ seo_title }}">
+    <meta property="og:description" content="{{ seo_description }}">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:image" content="{{ og_image_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{{ organization_jsonld|json_ld }}</script>
     <link rel="icon" href="{% static 'img/Logo-Tr-01.png' %}" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

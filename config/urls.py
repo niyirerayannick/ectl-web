@@ -9,12 +9,15 @@ from apps.units.views import UnitDetailView
 from apps.news.views import NewsDetailView, NewsListView
 from apps.gallery.views import GalleryView
 from apps.contact.views import ContactView
+from apps.core.seo import robots_txt, sitemap_index
 
 admin.site.site_header = "Energicotel PLC administration"
 admin.site.site_title = "Energicotel admin"
 admin.site.index_title = "Content management"
 
 urlpatterns = [
+    path("sitemap.xml", sitemap_index, name="sitemap"),
+    path("robots.txt", robots_txt, name="robots"),
     path("admin/", admin.site.urls),
     path("", HomeView.as_view(), name="home"),
     path("about/", AboutView.as_view(), name="about"),
